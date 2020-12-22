@@ -1,0 +1,86 @@
+* {
+	box-sizing: border-box;
+}
+/* Header */
+.title-left {
+	flex-grow: 1;
+}
+
+/* Home */
+.homeForm {
+	padding: 3rem;
+}
+
+/* Card */
+/* Impedir overflow do titulo com limite de 2 linhas */
+.card-title {
+	padding: 0 0.4rem;
+	word-wrap: break-word;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+/* Centralizando o titulo */
+.card-title-box {
+	height: 56px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Fixando o icone de favoritar entre o poster e o titulo */
+.icon-box {
+	position: relative;
+}
+.icon {
+	position: absolute !important;
+	right: -5px !important;
+	top: 265px !important;
+	z-index: 10 !important;
+	background-color: rgba(245, 245, 245, 0.35) !important;
+}
+
+/* ShowList */
+
+.card-list {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+/* Modal */
+.show-info {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* flex-wrap: wrap; */
+	gap: 1rem;
+	padding: 2rem;
+	color: mediumpurple;
+}
+
+.modal-image {
+	max-height: 100%;
+	max-width: 100%;
+	/* padding: 1rem 0; */
+}
+
+.modal-info {
+	max-height: 90%;
+	width: 40%;
+	overflow: auto;
+	scrollbar-width: thin;
+	padding: 1rem;
+	text-align: justify;
+}
+
+/* Quebra a modal quando a resolucao fica pequena */
+@media (max-width: 1170px) {
+	.modal-info {
+		width: 93%;
+	}
+}
