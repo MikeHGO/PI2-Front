@@ -42,7 +42,6 @@ const ShowModal = () => {
 		setIsModalOpen(false);
 		setModalContent({});
 	};
-	console.log(modalContent);
 
 	return (
 		<div>
@@ -63,7 +62,6 @@ const ShowModal = () => {
 						<img
 							src="http://static.tvmaze.com/uploads/images/original_untouched/190/476117.jpg"
 							alt="cover"
-							srcset=""
 							className="modal-image"
 						/>
 						<div className="modal-info">

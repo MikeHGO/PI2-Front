@@ -6,6 +6,7 @@ import {
 	Card,
 	CardActionArea,
 	CardMedia,
+	CircularProgress,
 } from '@material-ui/core';
 import { useModalContext } from '../utils/context';
 
@@ -42,13 +43,15 @@ const ShowCard = () => {
 		console.log('Fav click!');
 
 		// Desativa o button enquanto o fetch esta ocorrendo
-		setIsLoadingCardInfo(true);
+		// setIsLoadingCardInfo(true);
 
 		// fetch
 
 		setIsFavorited(!isFavorited);
+		// setIsLoadingCardInfo(!isLoadingCardInfo);
+		console.log('isLoadingCardInfo: ', isLoadingCardInfo);
 
-		setIsLoadingCardInfo(false);
+		// setIsLoadingCardInfo(false);
 	};
 
 	// medium cover 210 x 295
@@ -78,6 +81,10 @@ const ShowCard = () => {
 					>
 						{icon}
 					</IconButton>
+
+					{isLoadingCardInfo && (
+						<CircularProgress size={60} className="icon-progress" />
+					)}
 				</div>
 			</Card>
 		</>

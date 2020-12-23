@@ -1,5 +1,4 @@
 import React, { useState, createContext, useContext } from 'react';
-import Axios from 'axios';
 
 const UserContext = createContext();
 
@@ -9,15 +8,11 @@ const UserProvider = ({ children }) => {
 		user: undefined,
 	});
 
-	// Checar se user esta logado e talvez redirecionar
-	const checkLoggedIn = async (redirect, pageToRedirect) => {};
-
 	return (
 		<UserContext.Provider
 			value={{
 				userData,
 				setUserData,
-				checkLoggedIn,
 			}}
 		>
 			{children}

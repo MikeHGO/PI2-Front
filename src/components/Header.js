@@ -1,4 +1,6 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import {
 	AppBar,
 	ButtonBase,
@@ -12,9 +14,9 @@ import { Brightness4, Movie } from '@material-ui/icons';
 import HeaderButtons from './HeaderButtons';
 
 const Header = () => {
+	const navigate = useNavigate();
 	const handleMikeflix = () => {
-		console.log('title clicked');
-		// se estiver logado mandar pra home caso nao esteja na home
+		navigate('/');
 	};
 	return (
 		<>

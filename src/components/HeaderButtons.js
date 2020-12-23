@@ -1,27 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Button, IconButton } from '@material-ui/core';
 import { FavoriteRounded } from '@material-ui/icons';
 
+import { useUserContext } from '../utils/context';
+
 const HeaderButtons = () => {
-	// Pegar do context
-	const [isUserAuthenticated, setIsUserAuthenticated] = useState(true);
+	const navigate = useNavigate();
+	const { userData, setUserData } = useUserContext();
 
 	const handleLogin = () => {
-		console.log('login');
-		// usar o router navigate
-	};
-
-	const handleLogout = () => {
-		console.log('logout');
-		// deslogar e navigate LoginRegister
+		navigate('/login');
 	};
 
 	const handleFavorite = () => {
-		console.log('handleFavorite');
-		// usar o router navigate
+		navigate('/favorites');
 	};
-	const displayButtons = isUserAuthenticated ? (
+	const handleLogout = () => {
+		// Limpar userData e remover o jwt
+		setUserData({
+			token: undefined,
+			user: undefined,
+		});
+		localStorage.setItem('auth-token', '');
+		// Redirecionando >>>
+		navigate('/login');
+	};
+
+	const displayButtons = userData.user ? (
 		<>
 			<IconButton onClick={handleFavorite}>
 				<FavoriteRounded color="secondary" fontSize="large" />

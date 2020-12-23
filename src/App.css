@@ -41,6 +41,13 @@
 	z-index: 10 !important;
 	background-color: rgba(245, 245, 245, 0.35) !important;
 }
+.icon-progress {
+	position: absolute !important;
+	right: -5px !important;
+	top: 265px !important;
+	/* z-index: 0 !important; */
+	color: rgb(0, 128, 128) !important;
+}
 
 /* ShowList */
 
@@ -83,4 +90,39 @@
 	.modal-info {
 		width: 93%;
 	}
+}
+
+/* LoginRegister */
+.input-container {
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	flex-wrap: wrap;
+	gap: 1rem;
+	padding: 2rem;
+}
+
+.form-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+	padding: 2rem;
+}
+
+/* ERROR */
+
+.error-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 3rem;
+	margin-top: 5rem;
+	padding: 3rem 0;
+	/* border: 14px solid black;
+	border-radius: 4px; */
 }
