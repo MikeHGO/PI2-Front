@@ -17,7 +17,7 @@ const Favorites = () => {
 			<Container style={{ margin: '3rem 0' }}>
 				<Typography variant="h4">UserName favorites:</Typography>
 			</Container>
-			<ShowList />
+			{/* <ShowList /> */}
 		</>
 	);
 };

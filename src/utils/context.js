@@ -32,10 +32,6 @@ const ModalProvider = ({ children }) => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [modalContent, setModalContent] = useState({});
 
-	function printmodal() {
-		console.log('funcionou!');
-	}
-
 	return (
 		<ModalContext.Provider
 			value={{
@@ -43,7 +39,6 @@ const ModalProvider = ({ children }) => {
 				setIsModalOpen,
 				modalContent,
 				setModalContent,
-				printmodal,
 			}}
 		>
 			{children}

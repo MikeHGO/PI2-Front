@@ -70,10 +70,3 @@ function App() {
 }
 
 export default App;
-/*
-Aprender router v6
-usar navigate para redimencionar
-colocar o Header no top fixo
-pagina Error para rotas nao encontradas "*"
-https://github.com/ReactTraining/react-router/blob/dev/docs/advanced-guides/migrating-5-to-6.md
-*/

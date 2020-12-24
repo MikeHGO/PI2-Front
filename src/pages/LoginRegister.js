@@ -11,9 +11,12 @@ import { useUserContext } from '../utils/context';
 export default function LoginRegister() {
 	const { userData } = useUserContext();
 	const navigate = useNavigate();
+
 	useEffect(() => {
+		// Nao esta redirecionando !? !? !?
 		if (userData.user) navigate('/');
 	}, []);
+
 	return (
 		<>
 			<Container styles={{ border: '1 solid magenta' }}>

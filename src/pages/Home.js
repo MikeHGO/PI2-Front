@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import Axios from 'axios';
 
 import {
 	Container,
@@ -11,20 +13,45 @@ import { Search } from '@material-ui/icons';
 
 import ShowList from '../components/ShowList';
 import { useUserContext } from '../utils/context';
+import Error from './Error';
 
 const Home = () => {
 	const { userData } = useUserContext();
 	const navigate = useNavigate();
+	const [searchedText, setSearchedText] = useState('');
+	const [fetchedData, setFetchedData] = useState([]);
+
+	const [errorMessage, setErrorMessage] = useState(
+		'Welcome to MIKEFLIX! Type the show title in the search bar then submit'
+	);
+
 	useEffect(() => {
+		// useEffect da Home esta pegando o userData antes do App defini-lo.. como eu corrijo isso!?
 		if (!userData.user) navigate('/login');
+		console.log(userData.user);
 	}, []);
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		console.log('submit search');
-
-		// Pesquisar na api e passar dados pro ShowCardList
+	const handleChange = (e) => {
+		setSearchedText(e.target.value);
 	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		const res = await Axios.get(
+			`http://api.tvmaze.com/search/shows?q=${searchedText}`
+		);
+
+		if (res.data) setFetchedData(res.data);
+		setErrorMessage('Sorry, no shows found with that title');
+	};
+
+	const displayResult =
+		fetchedData.length === 0 ? (
+			<Error text={errorMessage} displayButton={false} />
+		) : (
+			<ShowList data={fetchedData} />
+		);
 
 	return (
 		<>
@@ -33,6 +60,8 @@ const Home = () => {
 					<OutlinedInput
 						placeholder="Search TV Shows"
 						autoFocus={true}
+						value={searchedText}
+						onChange={handleChange}
 						fullWidth
 						endAdornment={
 							<InputAdornment position="end">
@@ -44,7 +73,7 @@ const Home = () => {
 					/>
 				</form>
 			</Container>
-			<ShowList />
+			{displayResult}
 		</>
 	);
 };
