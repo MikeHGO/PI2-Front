@@ -1,5 +1,6 @@
 import React, { useState, createContext, useContext } from 'react';
 
+// Provider e Context para acessar e editar os dados do User
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
@@ -26,6 +27,7 @@ const useUserContext = () => {
 
 export { UserProvider, useUserContext };
 
+// Provider e Context para acessar e editar o conteudo da ShowModal
 const ModalContext = createContext();
 
 const ModalProvider = ({ children }) => {
@@ -51,9 +53,3 @@ const useModalContext = () => {
 };
 
 export { ModalProvider, useModalContext };
-
-/*
-UserProvider para todos
-ModalProvider apenas para Home e Favorites
-Talvez seja melhor um unico provider..., mas vou insistir nessa divisao
-*/

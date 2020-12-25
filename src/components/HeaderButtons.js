@@ -17,6 +17,7 @@ const HeaderButtons = () => {
 	const handleFavorite = () => {
 		navigate('/favorites');
 	};
+
 	const handleLogout = () => {
 		// Limpar userData e remover o jwt
 		setUserData({

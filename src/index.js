@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+
 import { UserProvider } from './utils/context';
+
 ReactDOM.render(
 	<React.StrictMode>
 		<UserProvider>
@@ -11,5 +13,3 @@ ReactDOM.render(
 	</React.StrictMode>,
 	document.getElementById('root')
 );
-
-// Wrap App com um context!?

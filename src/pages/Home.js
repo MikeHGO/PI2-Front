@@ -8,6 +8,7 @@ import {
 	IconButton,
 	OutlinedInput,
 	InputAdornment,
+	Paper,
 } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
 
@@ -29,6 +30,7 @@ const Home = () => {
 		// useEffect da Home esta pegando o userData antes do App defini-lo.. como eu corrijo isso!?
 		if (!userData.user) navigate('/login');
 		console.log(userData.user);
+		console.log('!!userdata:', !!userData.user);
 	}, []);
 
 	const handleChange = (e) => {
@@ -57,20 +59,22 @@ const Home = () => {
 		<>
 			<Container>
 				<form type="form" onSubmit={handleSubmit} className="homeForm">
-					<OutlinedInput
-						placeholder="Search TV Shows"
-						autoFocus={true}
-						value={searchedText}
-						onChange={handleChange}
-						fullWidth
-						endAdornment={
-							<InputAdornment position="end">
-								<IconButton type="submit">
-									<Search />
-								</IconButton>
-							</InputAdornment>
-						}
-					/>
+					<Paper elevation={3}>
+						<OutlinedInput
+							placeholder="Search TV Shows"
+							autoFocus={true}
+							value={searchedText}
+							onChange={handleChange}
+							fullWidth
+							endAdornment={
+								<InputAdornment position="end">
+									<IconButton type="submit">
+										<Search />
+									</IconButton>
+								</InputAdornment>
+							}
+						/>
+					</Paper>
 				</form>
 			</Container>
 			{displayResult}
@@ -79,5 +83,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// https://material-ui.com/api/outlined-input/#outlinedinput-api

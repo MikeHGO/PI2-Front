@@ -11,7 +11,8 @@ const useStyles = makeStyles((theme) => ({
 		justifyContent: 'center',
 	},
 	paper: {
-		backgroundColor: theme.palette.background.paper,
+		// backgroundColor: theme.palette.background.paper,
+		backgroundColor: 'whitesmoke',
 		borderRadius: '4px',
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2),
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ShowModal = () => {
+	const classes = useStyles();
 	// Controlando a modal atravez do custom hook useModalContext
 	const {
 		isModalOpen,
@@ -35,9 +37,7 @@ const ShowModal = () => {
 		modalContent,
 		setModalContent,
 	} = useModalContext();
-	const classes = useStyles();
 
-	// Fecha a modal e limpa o conteudo
 	const handleClose = () => {
 		setIsModalOpen(false);
 	};
@@ -60,13 +60,17 @@ const ShowModal = () => {
 					{modalContent.name && (
 						<div className={classes.paper}>
 							<img
-								src={modalContent.image.original || modalContent.image}
+								src={modalContent.image.original}
 								alt="cover"
 								className="modal-image"
 							/>
 							<div className="modal-info">
-								<Typography variant="h4" align="center">
-									{modalContent.name || 'Not Found'}
+								<Typography
+									variant="h4"
+									align="center"
+									style={{ marginBottom: '1rem' }}
+								>
+									{modalContent.name}
 								</Typography>
 								<Typography variant="subtitle1">
 									Genres: {modalContent.genres}
@@ -96,6 +100,3 @@ const ShowModal = () => {
 };
 
 export default ShowModal;
-
-// Loading https://material-ui.com/components/backdrop/
-// nota pessoal https://material-ui.com/components/rating/

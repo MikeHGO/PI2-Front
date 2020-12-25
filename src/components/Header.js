@@ -32,9 +32,9 @@ const Header = () => {
 
 						<HeaderButtons />
 
-						<IconButton>
+						{/* <IconButton>
 							<Brightness4 fontSize="large" color="inherit" />
-						</IconButton>
+						</IconButton> */}
 					</Toolbar>
 				</Container>
 			</AppBar>
@@ -44,7 +44,4 @@ const Header = () => {
 
 export default Header;
 
-// Dps fazer media query para telas pequenas apagar o mikeflix e deixar só o icone
-
-// tooltip para os botoes.. talvez
-// https://material-ui.com/components/tooltips/
+// TODO: aprender a fazer um "dark mode" com material ui

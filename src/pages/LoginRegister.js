@@ -14,7 +14,8 @@ export default function LoginRegister() {
 
 	useEffect(() => {
 		// Nao esta redirecionando !? !? !?
-		if (userData.user) navigate('/');
+		if (!!userData.user) navigate('/');
+		console.log(!!userData.user);
 	}, []);
 
 	return (
@@ -32,11 +33,3 @@ export default function LoginRegister() {
 		</>
 	);
 }
-
-// box https://material-ui.com/components/paper/
-// fields https://material-ui.com/components/text-fields/
-// register btn https://material-ui.com/components/progress/
-
-// error msg https://material-ui.com/components/snackbars/
-// alert https://material-ui.com/components/alert/
-// divisoria https://material-ui.com/components/dividers/

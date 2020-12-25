@@ -17,7 +17,7 @@ function App() {
 
 	// Se houver um auth-token no localStorage pegar as informacoes desse user
 	useEffect(() => {
-		const checkLoggedIn = async () => {
+		const getUser = async () => {
 			let token = localStorage.getItem('auth-token');
 
 			// Caso não exista um token, criar um vazio
@@ -25,6 +25,7 @@ function App() {
 				localStorage.setItem('auth-token', '');
 				token = '';
 			}
+
 			// Consultando se tem um user logado
 			// Axios.post(url, data, config)
 			const tokenRes = await Axios.post(
@@ -44,7 +45,7 @@ function App() {
 				});
 			}
 		};
-		checkLoggedIn();
+		getUser();
 	}, []);
 
 	return (
