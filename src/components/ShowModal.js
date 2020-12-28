@@ -31,12 +31,7 @@ const useStyles = makeStyles((theme) => ({
 const ShowModal = () => {
 	const classes = useStyles();
 	// Controlando a modal atravez do custom hook useModalContext
-	const {
-		isModalOpen,
-		setIsModalOpen,
-		modalContent,
-		setModalContent,
-	} = useModalContext();
+	const { isModalOpen, setIsModalOpen, modalContent } = useModalContext();
 
 	const handleClose = () => {
 		setIsModalOpen(false);

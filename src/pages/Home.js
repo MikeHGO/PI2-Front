@@ -17,7 +17,7 @@ import { useUserContext } from '../utils/context';
 import Error from './Error';
 
 const Home = () => {
-	const { userData } = useUserContext();
+	const { userData, getUser } = useUserContext();
 	const navigate = useNavigate();
 	const [searchedText, setSearchedText] = useState('');
 	const [fetchedData, setFetchedData] = useState([]);
@@ -26,8 +26,8 @@ const Home = () => {
 		'Welcome to MIKEFLIX! Type the show title in the search bar then submit'
 	);
 
-	useEffect(() => {
-		// useEffect da Home esta pegando o userData antes do App defini-lo.. como eu corrijo isso!?
+	useEffect(async () => {
+		await getUser();
 		if (!userData.user) navigate('/login');
 		console.log(userData.user);
 		console.log('!!userdata:', !!userData.user);

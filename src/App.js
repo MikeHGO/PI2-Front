@@ -1,51 +1,21 @@
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Axios from 'axios';
-
 import Header from './components/Header';
 import Home from './pages/Home';
 import Favorites from './pages/Favorites';
 import LoginRegister from './pages/LoginRegister';
 import Error from './pages/Error';
 import { ModalProvider, useUserContext } from './utils/context';
+// import CustomRoute from './components/CustomRoute';
 
 import './App.css';
 
 function App() {
-	const { setUserData } = useUserContext();
+	const { getUser } = useUserContext();
 
-	// Se houver um auth-token no localStorage pegar as informacoes desse user
-	useEffect(() => {
-		const getUser = async () => {
-			let token = localStorage.getItem('auth-token');
-
-			// Caso não exista um token, criar um vazio
-			if (token === null) {
-				localStorage.setItem('auth-token', '');
-				token = '';
-			}
-
-			// Consultando se tem um user logado
-			// Axios.post(url, data, config)
-			const tokenRes = await Axios.post(
-				'http://localhost:5000/users/tokenIsValid',
-				null,
-				{ headers: { 'my-auth-token': token } }
-			);
-
-			// Se houver um user logado -> setUserData no UserContext pra todo mundo!!!
-			if (tokenRes.data) {
-				const userRes = await Axios.get('http://localhost:5000/users/', {
-					headers: { 'my-auth-token': token },
-				});
-				setUserData({
-					token,
-					user: userRes.data,
-				});
-			}
-		};
-		getUser();
+	useEffect(async () => {
+		await getUser();
 	}, []);
 
 	return (
@@ -55,6 +25,7 @@ function App() {
 				<Routes>
 					<ModalProvider>
 						<Route path="/" element={<Home />} />
+						{/* <CustomRoute navigateTo="/login" path="/" component={Home} /> */}
 					</ModalProvider>
 					<ModalProvider>
 						<Route path="/favorites" element={<Favorites />} />

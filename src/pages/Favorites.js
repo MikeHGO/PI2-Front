@@ -10,15 +10,13 @@ import Error from './Error';
 import { useUserContext } from '../utils/context';
 
 const Favorites = () => {
-	const { userData } = useUserContext();
+	const { userData, getUser } = useUserContext();
 	const navigate = useNavigate();
 	const [fetchedData, setFetchedData] = useState([]);
 
-	useEffect(() => {
-		if (!userData.user) {
-			navigate('/login');
-			return;
-		}
+	useEffect(async () => {
+		await getUser();
+		if (!userData.user) return navigate('/login');
 
 		const checkFavs = async () => {
 			// Buscando favs do banco
