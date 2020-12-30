@@ -123,7 +123,7 @@ const RegisterForm = () => {
 							</IconButton>
 						</InputAdornment>
 					}
-					labelWidth={70}
+					labelWidth={130}
 					required
 				/>
 			</FormControl>
